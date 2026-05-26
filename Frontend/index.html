@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>File Uploader</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<div class="app">
+
+  <header>
+    <div class="logo"><i class="fas fa-cloud-upload-alt"></i> FileDrop</div>
+    <p>Upload, manage and download your files</p>
+  </header>
+
+  <!-- DROP ZONE -->
+  <div class="drop-zone" id="drop-zone">
+    <div class="drop-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+    <h2>Drag & Drop files here</h2>
+    <p>or <label for="file-input" class="browse-link">browse files</label></p>
+    <p class="drop-hint">Supports: PNG, JPG, PDF, DOC, TXT, MP4, ZIP, CSV · Max 10MB each</p>
+    <input type="file" id="file-input" multiple hidden/>
+  </div>
+
+  <!-- UPLOAD QUEUE -->
+  <div class="upload-queue hidden" id="upload-queue">
+    <div class="queue-header">
+      <h3>Uploading <span id="queue-count">0</span> file(s)</h3>
+      <button class="btn-upload" id="upload-btn">
+        <i class="fas fa-upload"></i> Upload All
+      </button>
+    </div>
+    <div class="queue-list" id="queue-list"></div>
+  </div>
+
+  <!-- UPLOADED FILES -->
+  <div class="files-section">
+    <div class="files-header">
+      <h3>Uploaded Files <span class="badge" id="file-count">0</span></h3>
+      <div class="files-controls">
+        <input type="text" id="search-files" placeholder="Search files..."/>
+        <div class="view-toggle">
+          <button class="view-btn active" id="grid-btn" onclick="setView('grid')">
+            <i class="fas fa-th"></i>
+          </button>
+          <button class="view-btn" id="list-btn" onclick="setView('list')">
+            <i class="fas fa-list"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="files-grid" id="files-container"></div>
+  </div>
+
+</div>
+
+<!-- DELETE MODAL -->
+<div class="modal-overlay hidden" id="delete-modal">
+  <div class="modal">
+    <i class="fas fa-trash modal-icon"></i>
+    <h3>Delete File?</h3>
+    <p id="delete-filename"></p>
+    <div class="modal-btns">
+      <button onclick="closeModal()">Cancel</button>
+      <button class="btn-danger" id="confirm-delete">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
